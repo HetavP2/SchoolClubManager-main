@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>{{ club_to_display.ClubName }}</title>
+<link rel='stylesheet' href='/static/css/styleves.css'>
+<link rel='stylesheet' href='/static/css/styleportfol.css'>
+{% endblock %}
+
+{% block body %}
+
+<body id='top' class='container-fluid' style='background-color: aliceblue; color:#EDF7F6'>
+    <div class='row'>
+        <header id='header' class='fixed-top d-flex align-items-center'>
+            <div class="container d-flex align-items-center justify-content-between">
+                <div class='logo'>
+                    <h2><span id='logospacing'></span><a href='/'>School Club Manager</a></h2>
+                </div>
+                <nav class='navbar navbar-expand-lg bg-body'>
+                    <div class='container-fluid'>
+                        <div class='collapse navbar-collapse' id='navbarText'>
+                            <ul class="nav justify-content-end">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
+                                        aria-expanded="false">My Clubs</a>
+                                    <ul class="dropdown-menu">
+                                        <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="/clubs?mode=new">Create a club</a>
+                                    </ul>
+                                </li>
+                                <a class="nav-link" href='/clubs?mode=viewall'>View Clubs</a>
+                                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <header id='header-side'>
+            <div class="n-flex flex-column">
+                <div class='profile'>
+                    <br><br><br>
+                    <h1 class='text-light'>Important Dates</h1>
+                    <nav id='navbar2' class="nav-menu navbar2">
+                        <ul>
+                            <a class='nav-link2 scrollto'>Application Start Date: {{ club_to_display.AppStartDate }}</a>
+                            <a class='nav-link2 scrollto'>Application Due Date: {{ club_to_display.AppEndDate }}</a>
+                        </ul>
+                    </nav>
+                </div>
+                <br><br><br><br><br>
+                <div class='profile'>
+                    <br><br><br>
+                    <h1 class='text-light'>Contact</h1>
+                    <nav id='navbar2' class="nav-menu navbar2">
+                        <ul>
+                            <a class='nav-link2 scrollto'>Email: {{ club_to_display.ClubContactEmail }}</a>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </div>
+    <main class='container' id='Top'>
+        <br><br>
+        <div class='row'>
+            <div class='col'></div>
+            <div class='col'></div>
+            <div class='col'>
+                <h1 id='clubname' style='margin: 80px auto;'>{{ club_to_display.ClubName }}</h1>
+            </div>
+            <div class='col'></div>
+        </div>
+
+
+
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-6 col-md-1">
+                </div>
+                <div class="col-md-6">
+                    <div class='rounded-4 description'>
+                        <h2>Description</h2>
+                        <p>{{ club_to_display.ClubDescription }}</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-5">
+                </div>
+            </div>
+            <br><br><br><br><br><br><br><br><br>
+            <div class="row">
+                <div class="col-6 col-md-1">
+                </div>
+                <div class="col-md-6">
+                    <div class='rounded-4 description'>
+                        <h2 id='Application'>Application</h2>
+                        <p class='applicationinline'>{{ applicationstatetext }}</p><button
+                            class='applicationinline btn btn-primary' {{applicationbttnstate}}><a
+                                style='color:rgb(255, 255, 255);'
+                                href='/clubs/{{ club_to_display.ClubId }}/applications/{{ StudentId }}?mode=view'>Click
+                                to
+                                Apply</a></button>
+                    </div>
+                </div>
+                <div class="col-6 col-md-5">
+                </div>
+            </div>
+        </div>
+        {% if Announcements %}
+        <div class='container' id='announceposition'>
+            <!-- <h2 style='position:relative ;left:13rem;background-color: #78BCC4;width: 15rem;'>Announcements</h2> -->
+            <div class='announcebackground'>
+                {% for announcement in Announcements %}
+                <div
+                    class='p-3 bg-opacity-10 rounded-end rounded-pill' style='background-color:#8AC8FF;border:1px solid black;'>
+                    <h1>{{ announcement.Header }}</h1>
+                    <p>{{ announcement.Message }}</p>
+                </div>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </main>
+</body>
+{% endblock %}

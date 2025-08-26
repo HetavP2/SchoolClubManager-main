@@ -1,0 +1,130 @@
+.form {
+    background-color: aliceblue;
+}
+
+.form label, .form h1 {
+    color: rgb(33, 137, 197);
+}
+
+#logospacing {
+    padding: 60px;
+}
+
+.sc {
+    margin: 9px;
+}
+
+.mainsize {
+    width: 77rem;
+}
+
+#myclubbody {
+    background-color: #1F3F49;
+    color: #B3C100;
+}
+
+.viewclubs {
+    background-color: #1F3F49;
+}
+
+#announcements, #announce {
+    display: inline;
+}
+
+.flex-column, #inline {
+    display: inline;
+}
+
+.col-5 {
+    margin: 80px auto;
+}
+
+.vnav {
+    position: fixed;
+}
+
+.nav {
+    margin: 20px auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navclubpg {
+    background-color: rgb(29, 194, 178);
+}
+
+#theseareclubs {
+    text-align: center;
+    color: rgb(207, 197, 197);
+}
+
+.landingpage {
+    background-color: aliceblue;
+}
+
+.announcebackground {
+    overflow: auto;
+    height: 32rem;
+    width: 33rem;
+}
+
+#announceposition {
+    position: relative;
+    bottom: 34rem;
+    left: 835px;
+}
+
+/* Designing for scroll-bar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: gainsboro;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 5px;
+}
+
+
+.description {
+    border: 2px groove black;
+    box-shadow: 10px 10px #BDE0FF;
+    opacity: 50;
+    color: #EDF7F6;
+    background-color: #8AC8FF;
+    height: 10rem;
+}
+
+.applicationinline {
+    display: inline;
+}
+
+.validate {
+    color: rgb(214, 101, 101);
+    font-size: 15px;
+}
+
+.displayannoucement {
+    display: inline;
+}
+
+.ownertabcolor {
+    color: rgb(59, 84, 154);
+}
+
+.border {
+    border: 2px solid;
+    margin: 12px;
+}
+
+.inline {
+    display: inline-block;
+}

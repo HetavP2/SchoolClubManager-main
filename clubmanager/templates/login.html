@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block head %}
+<title>♠ Manager</title>
+{% endblock %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger" style='text-align:center;' role="alert">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<body class='form'>
+    <main>
+        <form class='container formcolor' action='/login/dashboard' method='POST'>
+            <br><br><br><br><br><br>
+            <div class='row'>
+                <div class='col-4'></div>
+                <div class='col-4'>
+                    <h1>Login</h1>
+                </div>
+                <div class='col-4'></div>
+            </div>
+            <br>
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <div class='row'>
+                <div class='col-4'></div>
+                <div class='col-4'>
+                    {{ wtf.form_field(form.StudentNum) }}
+                </div>
+                <div class='col-4'></div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col-4'></div>
+                <div class='col-4'>
+                    {{ wtf.form_field(form.Password) }}
+                </div>
+                <div class='col-4'></div>
+            </div>
+            <br>
+            <div class='row'>
+                <div class='col-4'></div>
+                <div class='col-4'>
+                    <input class='btn btn-primary' type='submit' value='LOGIN'>
+                </div>
+                <div class='col-4'></div>
+            </div>
+        </form>
+    </main>
+</body>
+{% endblock %}

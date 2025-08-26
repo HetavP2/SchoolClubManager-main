@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block head %}
+<title>Club Manager</title>
+<link rel='stylesheet' href='/static/css/styles.css'>
+<link rel='stylesheet' href='/static/css/styleves.css'>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <header id='header' class='fixed-top d-flex align-items-center'>
+        <div class="container d-flex align-items-center justify-content-between">
+            <h2><a href='/'>School Club Manager</a></h2>
+            <nav class='navbar navbar-expand-lg bg-body'>
+                <div class='container-fluid'>
+                    <div class='collapse navbar-collapse' id='navbarText'>
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                    aria-expanded="false">My Clubs</a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="/dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="/clubs?mode=new">Create a club</a>
+                                </ul>
+                            </li>
+                            <a class="nav-link" href='/clubs?mode=viewall'>View Clubs</a>
+                            {% if not truthy %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                    aria-expanded="false">Applicants</a>
+                                <ul class="dropdown-menu">
+                                    {% for club in userClubCatalogue %}
+                                    <a class="dropdown-item"
+                                        href="/clubs/{{ club.ClubId }}/applications?mode=viewall">{{ club.ClubName
+                                        }}</a>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% endif %}
+                            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <br><br><br><br><br>
+    <main style='background-color: aliceblue;' class='container'>
+        <div class='row'>
+            {% if data %}
+            <h2 style='text-align:center;'>Applications for {{ ClubName_to_display }}</h2>
+            {% endif %}
+            <form method='POST' action='/clubs/{{ ClubId }}/selectionresults?mode=sendall'>
+                {{ form.csrf_token }}
+                <br>
+                {% if showsendresultsbttn %}
+                <td><input type='submit' class='btn btn-info' value='Send Results To All'></td>
+                {% endif %}
+                <br><br>
+                {% if showsendresultsbttn %}
+                <table class='table table-dark table-hover'>
+                    <thead>
+                        <tr>
+                            <th>Applicant</th>
+                            <th>Student Number</th>
+                            <th>Grade</th>
+                            <th>View Application</th>
+                            <th>Make Notes</th>
+                            <th>Role Applying For</th>
+                            <th>Student Notified?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                        <tr>
+                            <input type='hidden' value='{{ row.ApplicationId }}' name='ApplicationId'>
+                            <input type='hidden' value='{{ row.Email }}' name='ApplicantEmail'>
+                            <td>{{ row.FirstName }} {{ row.LastName }}</td>
+                            <td>{{ row.StudentNum }}</td>
+                            <td>{{ row.Grade }}</td>
+                            <td><a href='/clubs/{{ ClubId }}/applications/{{ row.id }}?mode=view' target='_blank'>Full
+                                    Application</a></td>
+                            <td>
+                                {% if row.ClubOwnerNotes != None %}
+                                <input type='text' class='form-control' name='ClubOwnerNotes'
+                                    value='{{ row.ClubOwnerNotes }}'>
+                                {% else %}
+                                <input type='text' class='form-control' name='ClubOwnerNotes'>
+                                {% endif %}
+                            </td>
+                            <td><select name='RoleIdSelectedFor' class="form-select">
+                                    {% if row.EmailSent == 'Yes' %}
+                                    <option value='None'>None</option>
+                                    <option value='{{ row.RoleIdApplyingFor }}' selected>{{ row.Role }}</option>
+                                    {% else %}
+                                    <option value='None' selected>None</option>
+                                    <option value='{{ row.RoleIdApplyingFor }}'>{{ row.Role }}</option>
+                                    {% endif %}
+                                </select></td>
+                            <td>{{ row.EmailSent }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+            {% else %}
+            <h1>No responses have been recorded for {{ ClubName_to_display }}!</h1>
+            {% endif %}
+        </div>
+    </main>
+</body>
+{% endblock %}
