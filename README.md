@@ -2,9 +2,7 @@
 
 ## Introduction
 
-School Club Manager is a comprehensive web-based platform designed to streamline the management of school clubs and student participation. The application provides an intuitive interface for students, club leaders, and administrators to interact, manage club activities, handle applications, and communicate effectively. By automating club operations, School Club Manager reduces manual workload, increases transparency, and enhances the overall experience for all users involved in school clubs.
-
-Whether you are a student looking to join a club, a club leader managing applications and announcements, or an administrator overseeing all clubs, this platform offers tailored tools to meet your needs.
+A full-stack application designed to help students manage extracurricular clubs efficiently. The platform allows students to discover clubs, apply to them, and stay updated. Club owners have the ability to manage members, events, and announcements seamlessly.  
 
 ---
 
