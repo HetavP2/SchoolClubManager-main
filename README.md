@@ -107,8 +107,3 @@ python run.py
 ```
 http://localhost:5000
 ```
-
-6. **Register and start using the platform**
-
-- Register as a student or admin.
-- Browse clubs, apply, manage, and interact as needed.
