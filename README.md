@@ -76,3 +76,39 @@ A full-stack application designed to help students manage extracurricular clubs 
   - `requirement.txt`: List of required Python packages.
 
 ---
+
+## How to Run
+
+Follow these steps to set up and run the School Club Manager project:
+
+1. **Install Python 3.x**  
+   Make sure Python 3.x is installed on your system.
+
+2. **Install dependencies**  
+   Open a terminal in the project directory and run:
+
+```
+pip install -r requirement.txt
+```
+
+3. **Initialize the database (if not already present)**  
+   The file `schoolclubmanager.db` should exist. If not, run the app once to auto-create it, or use a provided script if available.
+
+4. **Run the application**  
+   In the project directory, execute:
+
+```
+python run.py
+```
+
+5. **Access the web app**  
+   Open your browser and go to:
+
+```
+http://localhost:5000
+```
+
+6. **Register and start using the platform**
+
+- Register as a student or admin.
+- Browse clubs, apply, manage, and interact as needed.
