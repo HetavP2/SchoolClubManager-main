@@ -81,7 +81,7 @@ A full-stack application designed to help students manage extracurricular clubs 
 
 Follow these steps to set up and run the School Club Manager project:
 
-1. **Install Python 3.x**  
+1. **Install Python**  
    Make sure Python 3.x is installed on your system.
 
 2. **Install dependencies**  
